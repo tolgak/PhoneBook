@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PhoneBook.Dto;
+using PhoneBook.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +14,54 @@ namespace PhoneBook.DataAPI.Controllers
   [ApiController]
   public class PersonController : ControllerBase
   {
+    private readonly IPersonRepository _personRepository;
+
+    public PersonController(IPersonRepository personRepository)
+    {
+      _personRepository = personRepository;
+    }
+
     // GET: api/<PersonController>
     [HttpGet]
-    public IEnumerable<string> Get()
+    public async Task<ActionResult<IEnumerable<dtoPerson>>> Get()
     {
-      return new string[] { "value1", "value2" };
+      var people = await _personRepository.GetAll();
+      return Ok(people);
     }
 
     // GET api/<PersonController>/5
     [HttpGet("{id}")]
-    public string Get(int id)
+    public async Task<ActionResult<dtoPerson>> Get(Guid id)
     {
-      return "value";
+      var person = await _personRepository.Get(id);
+      if (person == null)
+        return NotFound();
+
+      return Ok(person);
     }
 
     // POST api/<PersonController>
     [HttpPost]
-    public void Post([FromBody] string value)
+    public async Task<ActionResult> Post([FromBody] dtoPerson person)
     {
+      await _personRepository.Add(person);
+      return Ok();
     }
 
     // PUT api/<PersonController>/5
     [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
+    public async Task<ActionResult> Put(Guid id, [FromBody] dtoPerson person)
     {
+      await _personRepository.Update(id, person);
+      return Ok();
     }
 
     // DELETE api/<PersonController>/5
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public async Task<ActionResult> Delete(Guid id)
     {
+      await _personRepository.Delete(id);
+      return Ok();
     }
   }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhoneBook.Dto
 {
-  public class ContactInfo
+  public class dtoContactInfo
   {
     public Guid Id { get; set; }
     public ContactInfoType ContactInfoType { get; set; }
