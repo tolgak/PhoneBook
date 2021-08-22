@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhoneBook.Dto
+namespace MockDataGenerator
 {
-  public class dtoContactInfo
+  public class ContactInfo
   {
     public Guid Id { get; set; }
-    public ContactInfoType ContactInfoType { get; set; }
+
+    public Guid PersonId { get; set; }
+
+    public int ContactInfoType { get; set; }
     public string Info { get; set; }
   }
+
 }

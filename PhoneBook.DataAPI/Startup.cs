@@ -27,7 +27,7 @@ namespace PhoneBook.DataAPI
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddDbContext<DataContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("PhoneBook.DataAPI")));
+      services.AddDbContext<DataContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DataConnection"), b => b.MigrationsAssembly("PhoneBook.DataAPI")));
       services.AddScoped<IDataContext>(provider => provider.GetService<DataContext>());
       services.AddScoped<IPersonRepository, PersonRepository>();
       services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
