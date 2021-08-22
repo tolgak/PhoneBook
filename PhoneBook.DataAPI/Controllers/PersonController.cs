@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PhoneBook.Dto;
 using PhoneBook.Repository;
 using PhoneBook.Repository.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,7 +20,6 @@ namespace PhoneBook.DataAPI.Controllers
       _personRepository = personRepository;
     }
 
-    // GET: api/<PersonController>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Person>>> Get()
     {
@@ -30,7 +27,6 @@ namespace PhoneBook.DataAPI.Controllers
       return Ok(people);
     }
 
-    // GET api/<PersonController>/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Person>> Get(Guid id)
     {
@@ -41,7 +37,6 @@ namespace PhoneBook.DataAPI.Controllers
       return Ok(person);
     }
 
-    // POST api/<PersonController>
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] Person person)
     {
@@ -49,7 +44,6 @@ namespace PhoneBook.DataAPI.Controllers
       return Ok();
     }
 
-    // PUT api/<PersonController>/5
     [HttpPut("{id}")]
     public async Task<ActionResult> Put(Guid id, [FromBody] Person person)
     {
@@ -57,7 +51,6 @@ namespace PhoneBook.DataAPI.Controllers
       return Ok();
     }
 
-    // DELETE api/<PersonController>/5
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(Guid id)
     {

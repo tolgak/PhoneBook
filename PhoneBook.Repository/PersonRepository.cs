@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using PhoneBook.Dto;
+﻿using Microsoft.EntityFrameworkCore;
 using PhoneBook.Repository.Entities;
 using System;
 using System.Collections.Generic;
@@ -30,8 +28,6 @@ namespace PhoneBook.Repository
       if (person.Id == Guid.Empty)
         person.Id = Guid.NewGuid();
 
-      //var entity = _mapper1.Map<Person>(person);
-
       _ctx.People.Add(person);
       await _ctx.SaveChangesAsync();
     }
@@ -48,7 +44,7 @@ namespace PhoneBook.Repository
 
     public async Task<Person> Get(Guid id)
     {
-      var entity = await _ctx.People.Include(x => x.ContactInfos).FirstOrDefaultAsync( x => x.Id == id);
+      var entity = await _ctx.People.Include(x => x.ContactInfos).FirstOrDefaultAsync(x => x.Id == id);
       return entity;
     }
 
@@ -64,11 +60,12 @@ namespace PhoneBook.Repository
       if (itemToUpdate == null)
         throw new NullReferenceException("Can not update: Person with given id not found");
 
-      _ctx.People.Remove(itemToUpdate);
-      _ctx.People.Add(person);
+      itemToUpdate.First_Name = person.First_Name;
+      itemToUpdate.Last_Name = person.Last_Name;
+      itemToUpdate.Company = person.Company;
 
       await _ctx.SaveChangesAsync();
-
     }
+
   }
 }

@@ -30,6 +30,7 @@ namespace PhoneBook.DataAPI
       services.AddDbContext<DataContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("PhoneBook.DataAPI")));
       services.AddScoped<IDataContext>(provider => provider.GetService<DataContext>());
       services.AddScoped<IPersonRepository, PersonRepository>();
+      services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
 
       services.AddControllers();
       services.AddSwaggerGen(c =>
