@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Repository", "Pho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockDataGenerator", "MockDataGenerator\MockDataGenerator.csproj", "{0C200E55-410A-481C-A442-450449AC3C60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.ReportHandler", "PhoneBook.ReportHandler\PhoneBook.ReportHandler.csproj", "{FBA04234-D398-4DA0-B138-83B56CAB3F49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0C200E55-410A-481C-A442-450449AC3C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C200E55-410A-481C-A442-450449AC3C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C200E55-410A-481C-A442-450449AC3C60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA04234-D398-4DA0-B138-83B56CAB3F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA04234-D398-4DA0-B138-83B56CAB3F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA04234-D398-4DA0-B138-83B56CAB3F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA04234-D398-4DA0-B138-83B56CAB3F49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

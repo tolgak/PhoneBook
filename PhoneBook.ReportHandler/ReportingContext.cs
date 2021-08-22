@@ -1,15 +1,15 @@
 ﻿
-using System;
-using System.IO;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using PhoneBook.Repository;
 using PhoneBook.Repository.Entities;
+using System;
+using System.IO;
 
-namespace MockDataGenerator
+namespace PhoneBook.ReportHandler
 {
-  public class ConsoleDataContext : DbContext, IDataContext
+
+  public class ReportingContext : DbContext
   {
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -19,10 +19,15 @@ namespace MockDataGenerator
           .AddJsonFile("appsettings.json", false)
           .Build();
 
-      optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+      optionsBuilder.UseNpgsql(configuration.GetConnectionString("ReportingConnection"), b => b.MigrationsAssembly("PhoneBook.ReportHandler"));
     }
 
-    public DbSet<Person> People { get; set; }
-    public DbSet<ContactInfo> ContactInfos { get; set; }
+    //public DbSet<Person> People { get; set; }
+    //public DbSet<ContactInfo> ContactInfos { get; set; }
+
+    public DbSet<ReportRequest> ReportRequests  { get; set; }
+
+
   }
+
 }

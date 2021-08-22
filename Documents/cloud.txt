@@ -1,7 +1,13 @@
 PostgreSQL hosting :
+
+- Data
 server                  surus.db.elephantsql.com
 user & default database ifvpgoxf
 password                lj7SDUz8ySaVQPth10iS0Vgao_dThEfP
-url                     postgres://ifvpgoxf:lj7SDUz8ySaVQPth10iS0Vgao_dThEfP@surus.db.elephantsql.com/ifvpgoxf
 
-API Key 331aa212-7f2d-4614-acd0-04aea270be81
+
+- Reporting
+server                  rogue.db.elephantsql.com
+user & default database oagjjiqk
+password                UDXzJqpbASUUHCifkA0xiPnwnxnTGSQI
+
