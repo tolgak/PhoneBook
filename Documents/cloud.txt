@@ -1,13 +1,18 @@
 PostgreSQL hosting :
-
 - Data
 server                  surus.db.elephantsql.com
 user & default database ifvpgoxf
 password                lj7SDUz8ySaVQPth10iS0Vgao_dThEfP
-
 
 - Reporting
 server                  rogue.db.elephantsql.com
 user & default database oagjjiqk
 password                UDXzJqpbASUUHCifkA0xiPnwnxnTGSQI
 
+- RabbitMQ hosting 
+CloudAMQP
+Hosts           kangaroo.rmq.cloudamqp.com
+                kangaroo-01.rmq.cloudamqp.com
+User & Vhost	bzenbcgk	  
+password        uSQ_rj1XWk6ThsG6INUVonuHjQ9r3L57	  
+https://api.cloudamqp.com/console/70176902-3566-4039-8b0f-2b96c7495221/details

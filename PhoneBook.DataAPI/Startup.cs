@@ -1,17 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using PhoneBook.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PhoneBook.DataAPI
 {
@@ -31,6 +25,7 @@ namespace PhoneBook.DataAPI
       services.AddScoped<IDataContext>(provider => provider.GetService<DataContext>());
       services.AddScoped<IPersonRepository, PersonRepository>();
       services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
+
 
       services.AddControllers();
       services.AddSwaggerGen(c =>
