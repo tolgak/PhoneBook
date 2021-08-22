@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PhoneBook.Repository;
@@ -9,9 +10,10 @@ using PhoneBook.Repository;
 namespace PhoneBook.Repository.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210822002040_changeRelation")]
+    partial class changeRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,6 +33,9 @@ namespace PhoneBook.Repository.Migrations
                     b.Property<string>("Info")
                         .HasColumnType("text");
 
+                    b.Property<Guid>("PersonId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
                     b.ToTable("ContactInfos");
@@ -43,9 +48,6 @@ namespace PhoneBook.Repository.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Company")
-                        .HasColumnType("text");
-
-                    b.Property<string>("ContactInfoId")
                         .HasColumnType("text");
 
                     b.Property<string>("First_Name")

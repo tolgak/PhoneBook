@@ -10,11 +10,11 @@ namespace PhoneBook.Repository
 {
   public interface IPersonRepository
   {
-    Task<dtoPerson> Get(Guid id);
-    Task<IEnumerable<dtoPerson>> GetAll();
-    Task Add(dtoPerson person);
+    Task<Person> Get(Guid id);
+    Task<IEnumerable<Person>> GetAll();
+    Task Add(Person person);
     Task Delete(Guid id);
-    Task Update(Guid id, dtoPerson person);
+    Task Update(Guid id, Person person);
   }
 
 

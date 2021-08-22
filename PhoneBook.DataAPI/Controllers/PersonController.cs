@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Dto;
 using PhoneBook.Repository;
+using PhoneBook.Repository.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace PhoneBook.DataAPI.Controllers
 
     // GET: api/<PersonController>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<dtoPerson>>> Get()
+    public async Task<ActionResult<IEnumerable<Person>>> Get()
     {
       var people = await _personRepository.GetAll();
       return Ok(people);
@@ -31,7 +32,7 @@ namespace PhoneBook.DataAPI.Controllers
 
     // GET api/<PersonController>/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<dtoPerson>> Get(Guid id)
+    public async Task<ActionResult<Person>> Get(Guid id)
     {
       var person = await _personRepository.Get(id);
       if (person == null)
@@ -42,7 +43,7 @@ namespace PhoneBook.DataAPI.Controllers
 
     // POST api/<PersonController>
     [HttpPost]
-    public async Task<ActionResult> Post([FromBody] dtoPerson person)
+    public async Task<ActionResult> Post([FromBody] Person person)
     {
       await _personRepository.Add(person);
       return Ok();
@@ -50,7 +51,7 @@ namespace PhoneBook.DataAPI.Controllers
 
     // PUT api/<PersonController>/5
     [HttpPut("{id}")]
-    public async Task<ActionResult> Put(Guid id, [FromBody] dtoPerson person)
+    public async Task<ActionResult> Put(Guid id, [FromBody] Person person)
     {
       await _personRepository.Update(id, person);
       return Ok();
