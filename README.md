@@ -1,4 +1,6 @@
 # PhoneBook
+Projenin tanımı ve isterleri için Documents dizinine bakılabilir.
+
 ## Teknolojik altyapı
 * PostGreSQL database 
   * elephantsql.com üzerinde
