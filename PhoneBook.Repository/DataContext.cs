@@ -5,6 +5,11 @@ namespace PhoneBook.Repository
 {
   public class DataContext : DbContext, IDataContext
   {
+    public DataContext() : base()
+    {
+
+    }
+
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
 
@@ -12,6 +17,7 @@ namespace PhoneBook.Repository
 
     public DbSet<Person> People { get; set; }
     public DbSet<ContactInfo> ContactInfos { get; set; }
+    public DbSet<ReportRequest> ReportRequests { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

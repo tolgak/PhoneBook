@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using PhoneBook.Repository.Entities;
+using System;
 using System.Threading.Tasks;
 
 namespace PhoneBook.Repository
 {
   public interface IReportRequestRepository
   {
-    Task Add(Location location);
+    Task<Guid> Add(Location location);
+    Task Request(Location location, Guid reportId, string contactApi, string reportApiUrl);
+    Task PatchAsync(ReportPatch patch);
   }
 }

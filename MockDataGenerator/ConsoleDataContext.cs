@@ -19,7 +19,7 @@ namespace MockDataGenerator
           .AddJsonFile("appsettings.json", false)
           .Build();
 
-      optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+      optionsBuilder.UseNpgsql(configuration.GetConnectionString("DataConnection"));
     }
 
     public DbSet<Person> People { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Repository;
+using PhoneBook.Repository.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -32,9 +33,22 @@ namespace PhoneBook.DataAPI.Controllers
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] Location location)
     {
-      await _reportRequestRepository.Add(location);
+      var apiBasePath = Request.Host.HasValue ? Request.Host.Value : string.Empty;
+      var contactApi = $"http://{apiBasePath}/api/ContactInfo";
+      var reportApi = $"http://{apiBasePath}/api/Report";
+
+      var reportId = await _reportRequestRepository.Add(location);
+      await _reportRequestRepository.Request(location, reportId, contactApi, reportApi);
       return Ok();
     }
+
+    [HttpPatch]
+    public async Task<ActionResult> Patch([FromBody] ReportPatch patch)
+    {
+      await _reportRequestRepository.PatchAsync(patch);
+      return Ok();
+    }
+
 
 
   }

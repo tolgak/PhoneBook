@@ -13,9 +13,11 @@ namespace PhoneBook.Repository.Entities
   {
     public Guid Id { get; set; }
     public DateTime DateRequested { get; set; }
-    public DateTime DateCompleted { get; set; }
+    public DateTime? DateCompleted { get; set; }
     public ReportStatus Status { get; set; }
-    public Location RequestLocation { get; set; }
+    public string RequestLocation { get; set; }
+    public int cntPeopleNearBy{ get; set; }
+    public int cntPhonesNearBy { get; set; }
   }
 
 

@@ -2,7 +2,7 @@
 {
   class Program
   {
-    static void Main(string[] args)
+    static void Main()
     {
       var repository = new RandomDataRepository();
       var people = repository.GetPeople();

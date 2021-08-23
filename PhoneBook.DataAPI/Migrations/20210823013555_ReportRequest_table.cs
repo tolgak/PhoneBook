@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace PhoneBook.ReportHandler.Migrations
+namespace PhoneBook.Repository.Migrations
 {
-    public partial class initialSetup : Migration
+    public partial class ReportRequest_table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
