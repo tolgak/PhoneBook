@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBook.Repository;
 using PhoneBook.Repository.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -19,15 +20,20 @@ namespace PhoneBook.DataAPI.Controllers
     }
 
     [HttpGet]
-    public IEnumerable<string> Get()
+    public async Task<ActionResult> GetAll()
     {
-      return new string[] { "value1", "value2" };
+      var reports = await _reportRequestRepository.GetAll();
+      return Ok(reports);
     }
 
     [HttpGet("{id}")]
-    public string Get(int id)
+    public async Task<ActionResult> Get(Guid id)
     {
-      return "value";
+      var report = await _reportRequestRepository.Get(id);
+      if (report == null)
+        return NotFound();
+
+      return Ok(report);
     }
 
     [HttpPost]

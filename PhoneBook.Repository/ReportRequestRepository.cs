@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using PhoneBook.Repository.Entities;
 using RabbitMQ.Client;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -24,6 +26,18 @@ namespace PhoneBook.Repository
       _username = rabbitMqOptions.Value.UserName;
       _password = rabbitMqOptions.Value.Password;
       _vhost = rabbitMqOptions.Value.Vhost;
+    }
+
+    public async Task<ReportRequest> Get(Guid id)
+    {
+      var entity = await _ctx.ReportRequests.FindAsync(id);
+      return entity;
+    }
+
+    public async Task<IEnumerable<ReportRequest>> GetAll()
+    {
+      var entities = await _ctx.ReportRequests.ToListAsync();
+      return entities;
     }
 
     public async Task<Guid> Add(Location location)
