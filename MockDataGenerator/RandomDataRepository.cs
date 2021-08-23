@@ -4,16 +4,12 @@ using System.Linq;
 using System.Text.Json;
 using Bogus;
 using PhoneBook.Repository.Entities;
+using PhoneBook.Repository;
 
 namespace MockDataGenerator
 {
   public class RandomDataRepository
   {
-    private class Location { 
-      public double Latitude { get; set; }
-      public double Longitude { get; set; } 
-    }
-
     private class ValueHolder { public string Value { get; set; } }
 
     public IEnumerable<PhoneBook.Repository.Entities.Person> GetPeople()

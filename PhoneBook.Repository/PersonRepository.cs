@@ -9,18 +9,11 @@ namespace PhoneBook.Repository
   public class PersonRepository : IPersonRepository
   {
 
-    private IDataContext _ctx;
-    //private IMapper _mapper1;
-    //private IMapper _mapper2;
+    private readonly IDataContext _ctx;
 
     public PersonRepository(IDataContext context)
     {
       _ctx = context;
-      //var config1 = new MapperConfiguration(cfg => cfg.CreateMap<dtoPerson, Person>());
-      //_mapper1 = config1.CreateMapper();
-
-      //var config2 = new MapperConfiguration(cfg => cfg.CreateMap<Person, dtoPerson>());
-      //_mapper2 = config2.CreateMapper();
     }
 
     public async Task Add(Person person)

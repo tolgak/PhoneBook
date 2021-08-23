@@ -26,6 +26,9 @@ namespace PhoneBook.DataAPI
       services.AddScoped<IPersonRepository, PersonRepository>();
       services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
 
+      services.AddOptions();
+      services.Configure<RabbitMqConfiguration>(Configuration.GetSection("RabbitMQ"));
+      services.AddScoped<IReportRequestRepository, ReportRequestRepository>();
 
       services.AddControllers();
       services.AddSwaggerGen(c =>

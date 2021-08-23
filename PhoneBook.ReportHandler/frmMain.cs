@@ -13,8 +13,8 @@ namespace PhoneBook.ReportHandler
   public partial class frmMain : Form
   {
 
-    IConnection _connection;
-    IModel _channel;
+    private IConnection _connection;
+    private IModel _channel;
 
     public frmMain()
     {
@@ -31,17 +31,16 @@ namespace PhoneBook.ReportHandler
 
       var factory = new ConnectionFactory()
       {
-        HostName = configuration.GetSection("RabbitMQ:ConsumerSettings:HostName").Value,
-        UserName = configuration.GetSection("RabbitMQ:ConsumerSettings:Username").Value,
-        Password = configuration.GetSection("RabbitMQ:ConsumerSettings:Password").Value,
-        VirtualHost = configuration.GetSection("RabbitMQ:ConsumerSettings:Vhost").Value,
+        HostName = configuration.GetSection("RabbitMQ:HostName").Value,
+        UserName = configuration.GetSection("RabbitMQ:Username").Value,
+        Password = configuration.GetSection("RabbitMQ:Password").Value,
+        VirtualHost = configuration.GetSection("RabbitMQ:Vhost").Value,
       };
 
       _connection = factory.CreateConnection();
       _channel = _connection.CreateModel();
 
-
-      _channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
+      _channel.QueueDeclare(queue: "report-request", durable: false, exclusive: false, autoDelete: false, arguments: null);
       _logger("Waiting for messages.");
 
       var consumer = new EventingBasicConsumer(_channel);
@@ -50,7 +49,7 @@ namespace PhoneBook.ReportHandler
         var message = Encoding.UTF8.GetString(ea.Body.ToArray());
         _logger(message);
       };
-      _channel.BasicConsume(queue: "hello", autoAck: true, consumer: consumer);
+      _channel.BasicConsume(queue: "report-request", autoAck: true, consumer: consumer);
     }
 
     private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
